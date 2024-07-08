@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { deleteTask, taskChecked } from "../store/taskSlice";
 
 function Task(props) {
-    const { task } = props;
+    const { task, index } = props;
     const dispatch = useDispatch();
     
     const handlerChangeCheckedState = () => {
@@ -14,7 +14,7 @@ function Task(props) {
     };
     
     const handlerDeleteTask = () => {
-        const shouldDelete = window.confirm("Ви впевнені, що хочете видалити це завдання?");
+        const shouldDelete = window.confirm("Ви впевнені, що хочете видалити завдання \"" + task.text + "\"?");
         if (shouldDelete) {
             dispatch(deleteTask({
                 id: task.id
@@ -23,7 +23,7 @@ function Task(props) {
     };
 
     return (
-      <div id={`task-${task.id}`} className="task">
+      <div id={`task-${index + 1}`} className="task">
         <label className={task.isChecked ? "checked" : ""}>
             <input className="task-input" type="checkbox" checked={task.isChecked} onChange={(handlerChangeCheckedState)} />
             <span className="task-text">{task.text}</span>

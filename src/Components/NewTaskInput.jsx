@@ -19,7 +19,21 @@ function NewTaskInput() {
   }
   return (
     <div className='new-task'>
-      <input className='new-task-input' type="text" value={value} onChange={(e) => {setValue(e.target.value)}} placeholder='Введіть текст нової справи...'/>
+      <textarea
+        className='new-task-input'
+        type="text"
+        rows={1}
+        cols={25}
+        style={
+          {
+            resize: 'none',
+            lineHeight: 1.4
+          }
+        }
+        value={value}
+        onChange={(e) => {setValue(e.target.value)}}
+        placeholder='Введіть текст нової справи...'
+      />
       <span className='add-icon' onClick={handlerAddNewTask}><VscAdd /></span>
     </div>
   );

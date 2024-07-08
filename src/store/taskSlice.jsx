@@ -21,10 +21,14 @@ const taskSlice = createSlice({
         taskChecked: function(state, action){
             state.taskList = state.taskList.map((task) => task.id === action.payload.id ? {...task, isChecked: !task.isChecked} : task);
             localStorage.setItem('taskList', JSON.stringify(state.taskList));
+        },
+        clearTaskList: function(state, action){
+            state.taskList = [];
+            localStorage.clear();
         }
     }
 });
 
-export const {addNewTask, deleteTask, taskChecked} = taskSlice.actions;
+export const {addNewTask, deleteTask, taskChecked, clearTaskList} = taskSlice.actions;
 
 export default taskSlice.reducer;
