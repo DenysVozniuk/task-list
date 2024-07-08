@@ -163,6 +163,8 @@ label.checked .task-text {
     }
 
     .task-list-container-body {
-        max-height: 100vh;
+        min-height: 100vh;
+        overflow-y: hidden;
+        max-height: none;
     }
 }
